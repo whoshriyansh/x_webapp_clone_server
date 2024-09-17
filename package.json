@@ -4,9 +4,8 @@
   "description": "This is the backend of the X web app clone made by using Express and MongoDB",
   "main": "Server.js",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon Server.js",
-    "start": "NODE_ENV=production node Server.js",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+    "dev": "nodemon Server.js",
+    "start": "node Server.js"
   },
   "keywords": [
     "x_web_app_clone",

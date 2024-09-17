@@ -1,13 +1,20 @@
-FROM node:16.20.1
+# Stage 1: Build the application
+FROM node:16.20.1 AS build
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package*.json ./
-
+COPY package.json package-lock.json ./
 RUN npm install
 
 COPY . .
 
+# Stage 2: Set up the runtime environment
+FROM node:16.20.1
+
+WORKDIR /app
+
+COPY --from=build /app /app
+
 EXPOSE 4000
 
-CMD [ "node", "server.js" ]
+CMD [ "npm", "run", "start" ]
